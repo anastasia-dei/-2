@@ -1,9 +1,21 @@
 
 #include<iostream>
 #include<random>
+
+int read_answer(){
+	int rezult;
+	std::cout <<"Возьмите от 1 до 3 камней" << std::endl;
+	std::cin >>rezult;
+	while (rezult > 3 or rezult < 1) {
+		std::cerr << "Неверное число, можно брать только от 1 до 3 камней" << std::endl;
+		std::cout << "Возьмите от 1 до 3 камней" << std::endl;
+		std::cin >>rezult;
+	}
+	return rezult;
+
+}
 int main()
 {
-
 	std::random_device rd;
 	std::ranlux48 rnd { rd() };
 	std::uniform_int_distribution<> dist1 {15, 25};
@@ -16,9 +28,9 @@ int main()
 
 		if( i%2 == 0)
 		{
-		std::cout << "Введите кол-во камней, которое вы возьмете : " << std::endl;
-		std::cin >> a;
-		std::cout << "Осталось " <<(d1 - a) <<"камней " << std::endl;
+
+		a=read_answer();
+		std::cout << "Осталось " <<(d1 - a) <<" камней " << std::endl;
 		d1-=a;
 		}
 		else{
